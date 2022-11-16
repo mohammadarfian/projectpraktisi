@@ -31,13 +31,24 @@
                                 </div>
                             @endif
 
+                            <!-- Menampilkan Error form validation -->
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <b>Terjadi kesalahan pada proses input data</b> <br>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
                             <form action="{{ url('user/process-login') }}" method="POST">
                             @csrf
                             
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
-                                        name="email">
+                                    <input type="text" class="form-control" id="email" name="email">
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
